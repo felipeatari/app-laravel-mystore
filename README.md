@@ -14,4 +14,4 @@
 ## Banco de Dados - Adiciona dados
 
 ## Banco de Dados - Cria classes DB
-./vendor/bin/sail artisan make:model Test --migration --factory --seeder
+./vendor/bin/sail artisan make:model Test --migration --factory --seed

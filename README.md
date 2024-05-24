@@ -18,3 +18,6 @@
 
 ## Storage - Cria link simbólico
 ./vendor/bin/sail artisan storage:link
+
+## Request - Cria classe
+./vendor/bin/sail artisan make:request ProductStoreRequest

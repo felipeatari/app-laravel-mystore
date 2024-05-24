@@ -18,4 +18,4 @@ Route::put('/admin/products/{product}', [AdminProductController::class, 'edit_re
 // Admin - Apagar dados 1
 Route::delete('/admin/products/{product}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
 // Admin - Apagar dados 2
-Route::get('/admin/products/{product}/delete-image', [AdminProductController::class, 'deleteImage'])->name('admin.product.deleteImage');
+Route::get('/admin/products/{product}/delete-image', [AdminProductController::class, 'delete_image'])->name('admin.product.delete_image');

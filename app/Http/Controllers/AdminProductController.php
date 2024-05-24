@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductStoreRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -19,6 +20,28 @@ class AdminProductController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('admin.products_create');
+    }
+
+    public function create_req(ProductStoreRequest $request)
+    {
+        $inputs = $request->validated();
+
+        $inputs['slug'] = Str::slug($inputs['name']);
+
+        if (!empty($inputs['cover']) && $inputs['cover']->isValid()) {
+            $file = $inputs['cover'];
+            $path = $file->store('products');
+            $inputs['cover'] = $path;
+        };
+
+        Product::create($inputs);
+
+        return Redirect::route('admin.products');
+    }
+
     public function edit(Product $product)
     {
         return view('admin.products_edit', [
@@ -26,15 +49,9 @@ class AdminProductController extends Controller
         ]);
     }
 
-    public function edit_req(Product $product, Request $request)
+    public function edit_req(Product $product, ProductStoreRequest $request)
     {
-        $inputs = $request->validate([
-            'name' => 'string|required',
-            'price' => 'string|required',
-            'stock' => 'integer|nullable',
-            'cover' => 'file|nullable',
-            'description' => 'string|nullable',
-        ]);
+        $inputs = $request->validated();
 
         $inputs['slug'] = Str::slug($inputs['name']);
 
@@ -51,34 +68,6 @@ class AdminProductController extends Controller
         return Redirect::route('admin.products');
     }
 
-    public function create()
-    {
-        return view('admin.products_create');
-    }
-
-    public function create_req(Request $request)
-    {
-        $inputs = $request->validate([
-            'name' => 'string|required',
-            'price' => 'string|required',
-            'stock' => 'integer|nullable',
-            'cover' => 'file|nullable',
-            'description' => 'string|nullable',
-        ]);
-
-        $inputs['slug'] = Str::slug($inputs['name']);
-
-        if (!empty($inputs['cover']) && $inputs['cover']->isValid()) {
-            $file = $inputs['cover'];
-            $path = $file->store('products');
-            $inputs['cover'] = $path;
-        };
-
-        Product::create($inputs);
-
-        return Redirect::route('admin.products');
-    }
-
     public function delete(Product $product)
     {
         $product->delete();
@@ -87,7 +76,7 @@ class AdminProductController extends Controller
         return Redirect::route('admin.products');
     }
 
-    public function deleteImage(Product $product)
+    public function delete_image(Product $product)
     {
         if (!empty($product->cover)) Storage::delete($product->cover);
         $product->cover = null;

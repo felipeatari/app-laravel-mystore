@@ -15,5 +15,7 @@ Route::post('/admin/products', [AdminProductController::class, 'create_req'])->n
 Route::get('/admin/products/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.product.edit');
 Route::put('/admin/products/{product}', [AdminProductController::class, 'edit_req'])->name('admin.product.edit_req');
 
-// Route::get('/admin/products/{product}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
+// Admin - Apagar dados 1
 Route::delete('/admin/products/{product}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
+// Admin - Apagar dados 2
+Route::get('/admin/products/{product}/delete-image', [AdminProductController::class, 'deleteImage'])->name('admin.product.deleteImage');

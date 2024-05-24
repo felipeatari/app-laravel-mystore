@@ -4,8 +4,9 @@
     <section class="text-gray-600">
         <div class="container px-5 py-24 mx-auto">
             <div class="lg:w-2/4 w-full mx-auto overflow-auto">
+                <a href="{{ route('admin.products', $product->id) }}" class="mt-3 mb-10 text-indigo-500 inline-flex items-center">Voltar</a>
                 <div class="flex items-center justify-between mb-2">
-                    <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">Adicionar produto</h1>
+                    <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">Editar produto</h1>
                 </div>
                 <form enctype="multipart/form-data" method="POST" action="{{ route('admin.product.edit_req', $product->id) }}">
                     @csrf
@@ -41,6 +42,13 @@
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             </div>
                         </div>
+
+                        @if ($product->cover)
+                            <div class="p-2 w-full">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($product->cover) }}" alt="">
+                                <a href="{{ route('admin.product.deleteImage', $product->id) }}">Deletar imagem</a>
+                            </div>
+                        @endif
 
                         <div class="p-2 w-full">
                             <div class="relative">

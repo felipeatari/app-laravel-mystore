@@ -1,7 +1,17 @@
 @extends('layouts.default')
 
 @section('content')
-{{-- {{ dd($products) }} --}}
+    <section>
+        <div class="container px-5 mx-auto">
+            <form method="GET" action="" class="flex items-center space-x-5">
+                <div class="relative">
+                    <input value="{{ request()->search }}" type="text" id="search" name="search" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Pesquisar</button>
+                <a class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" href="/">Limpar</a>
+            </form>
+        </div>
+    </section>
     <section class="text-gray-600">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap -m-4">

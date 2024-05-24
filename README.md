@@ -15,3 +15,6 @@
 
 ## Banco de Dados - Cria classes DB
 ./vendor/bin/sail artisan make:model Test --migration --factory --seed
+
+## Storage - Cria link simbólico
+./vendor/bin/sail artisan storage:link

@@ -13,4 +13,4 @@ Route::get('/admin/products/create', [AdminProductController::class, 'create'])-
 Route::post('/admin/products', [AdminProductController::class, 'create_req'])->name('admin.product.create_req');
 
 Route::get('/admin/products/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.product.edit');
-Route::put('/admin/products/product', [AdminProductController::class, 'edit_req'])->name('admin.product.edit_req');
+Route::put('/admin/products/{product}', [AdminProductController::class, 'edit_req'])->name('admin.product.edit_req');

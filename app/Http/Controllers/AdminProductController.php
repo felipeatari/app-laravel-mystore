@@ -77,4 +77,11 @@ class AdminProductController extends Controller
 
         return Redirect::route('admin.products');
     }
+
+    public function delete(Product $product)
+    {
+        $product->delete();
+
+        return Redirect::route('admin.products');
+    }
 }

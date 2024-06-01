@@ -1,7 +1,7 @@
 # Comandos Artisan 
 
 ## Criar classes
-./vendor/bin/sail artisan make:controller TestController
+< ./vendor/bin/sail artisan make:controller TestController
 ./vendor/bin/sail artisan make:model Test
 ./vendor/bin/sail artisan make:factory TestFactory
 ./vendor/bin/sail artisan make:seeder TestSeeder

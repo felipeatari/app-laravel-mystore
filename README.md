@@ -11,7 +11,7 @@
 ./vendor/bin/sail artisan migrate:fresh
 
 ## Banco de Dados - Adiciona dados
-./vendor/bin/sail artisan migrate:fresh -seed
+./vendor/bin/sail artisan migrate:fresh --seed
 
 ## Banco de Dados - Cria classes DB
 ./vendor/bin/sail artisan make:model Test --migration --factory --seed
